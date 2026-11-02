@@ -1,0 +1,91 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+@import '@fontsource-variable/big-shoulders-display';
+@import '@fontsource-variable/schibsted-grotesk';
+@import '@fontsource-variable/jetbrains-mono';
+
+@theme {
+  --color-snow: #edf0f4;
+  --color-ink: #0b1e3a;
+  --color-royal: #1f4fd8;
+  --color-slate: #53627a;
+  --color-rule: #c7d0dc;
+  --color-hi: #ffd84d;
+  --font-display: 'Big Shoulders Display Variable', 'Arial Narrow', sans-serif;
+  --font-sans: 'Schibsted Grotesk Variable', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
+  /* Modular scale, ratio 1.333 */
+  --text-sm: 0.875rem;
+  --text-base: 1.0625rem;
+  --text-lg: 1.333rem;
+  --text-xl: 1.777rem;
+  --text-2xl: 2.369rem;
+  --text-3xl: 3.157rem;
+}
+
+@layer base {
+  html {
+    background: var(--color-snow);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection { background: var(--color-hi); color: var(--color-ink); }
+  a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+  :focus-visible { outline: 2px solid var(--color-royal); outline-offset: 3px; border-radius: 2px; }
+  h1, h2, h3 { font-family: var(--font-display); line-height: 0.92; letter-spacing: -0.01em; text-wrap: balance; }
+  p { text-wrap: pretty; }
+}
+
+@layer components {
+  .wrap { width: min(100% - 2.5rem, 84rem); margin-inline: auto; }
+  .measure { max-width: 34em; }
+  .link {
+    background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+    transition: background-size 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+    text-decoration: none;
+  }
+  .link:hover, .link:focus-visible { background-size: 100% 1px; }
+  .section-title { font-size: clamp(2.6rem, 6vw, 5rem); font-weight: 800; }
+}
+
+/* Hero letters: variable weight driven by JS (cursor proximity + load sequence). */
+.glyph {
+  display: inline-block;
+  font-variation-settings: 'wght' var(--w, 800);
+  will-change: transform;
+}
+
+/* ---------- X-ray mode (press X) ---------- */
+html.xray [data-x] {
+  outline: 1px dashed color-mix(in srgb, var(--color-royal) 70%, transparent);
+  outline-offset: 2px;
+  position: relative;
+}
+html.xray [data-x]::before {
+  content: attr(data-x);
+  position: absolute;
+  inset: 0 auto auto 0;
+  z-index: 40;
+  font: 500 10.5px/1 var(--font-mono);
+  padding: 2px 5px;
+  background: var(--color-hi);
+  color: var(--color-ink);
+  white-space: nowrap;
+  pointer-events: none;
+}
+html.xray body { background-image: linear-gradient(var(--color-rule) 1px, transparent 1px), linear-gradient(90deg, var(--color-rule) 1px, transparent 1px); background-size: 24px 24px; background-attachment: fixed; }
+
+/* ---------- Gameday mode (Konami) ---------- */
+html.gameday { --color-snow: #002e5d; --color-ink: #ffffff; --color-slate: #b9c8dd; --color-rule: #2a5585; --color-royal: #8fb8ff; }
+html { transition: background-color 0.6s, color 0.6s; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* Code blocks: override Shiki's inline theme background to match the ink color. */
+.prose pre { background-color: var(--color-ink) !important; border-radius: 0; }

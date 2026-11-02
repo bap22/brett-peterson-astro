@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import WorkList from '../components/WorkList.astro';
+import { getCollection } from 'astro:content';
+const projects = (await getCollection('projects')).sort((a, b) => (a.data.order ?? 10) - (b.data.order ?? 10));
+const archive = (await getCollection('archive')).sort((a, b) => a.data.name.localeCompare(b.data.name));
+---
+<Base title="Work" description="Websites, marketing engineering, and AI tools by Brett Peterson.">
+  <section class="wrap pt-12">
+    <h1 class="text-[clamp(4rem,13vw,11rem)] font-black uppercase">Work</h1>
+    <p class="measure mt-6 text-lg">Most of my work is one big site run well for a long time, plus the tools that keep it honest. The rest is side projects I couldn't leave alone.</p>
+  </section>
+  <section class="wrap mt-16" aria-label="Projects"><WorkList projects={projects} /></section>
+
+  <section class="wrap mt-28 grid gap-10 lg:grid-cols-[1fr_2fr]" aria-labelledby="archive-title" data-x="<section#archive>">
+    <div>
+      <h2 id="archive-title" class="section-title">2014 archive</h2>
+      <p class="mt-4 max-w-xs text-slate">Client launches from the old WordPress portfolio. Most of these sites have since been rebuilt or retired.</p>
+    </div>
+    <ul class="columns-2 gap-8 border-t border-ink pt-4 sm:columns-3">
+      {archive.map((a) => <li class="break-inside-avoid border-b border-rule py-2 font-mono text-sm">{a.data.name}</li>)}
+    </ul>
+  </section>
+</Base>

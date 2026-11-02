@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props { projects: CollectionEntry<'projects'>[] }
+const { projects } = Astro.props;
+---
+<ul data-work-list class="border-t border-ink" data-x="<ul.work>">
+  {projects.map((p) => {
+    const Tag = p.data.url ? 'a' : 'div';
+    return (
+      <li data-work-row class="border-b border-rule">
+        <Tag href={p.data.url ?? undefined} target={p.data.url?.startsWith('http') ? '_blank' : undefined} rel={p.data.url ? 'noopener' : undefined}
+          class="group grid grid-cols-1 gap-2 py-6 no-underline sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-8">
+          <span>
+            <span class="font-display text-[clamp(2rem,4.5vw,3.6rem)] font-extrabold leading-none transition-colors group-hover:text-royal">{p.data.title}</span>
+            <span class="mt-2 block max-w-[38em] text-slate">{p.data.summary}</span>
+          </span>
+          <span class="text-sm text-slate sm:text-right">{p.data.role}<br class="hidden sm:block" /><span class="sm:hidden">, </span>{p.data.year}</span>
+        </Tag>
+        <template>
+          <p class="text-[13px] text-snow/60">{p.data.role}, {p.data.year}</p>
+          <ul class="mt-3 flex flex-wrap gap-1.5">{p.data.stack.map((s) => <li class="border border-snow/25 px-2 py-0.5 text-[13px]">{s}</li>)}</ul>
+          {p.data.url && <p class="mt-3 text-[13px] text-hi">{p.data.url.replace(/^https?:\/\/(www\.)?/, '')}</p>}
+        </template>
+      </li>
+    );
+  })}
+</ul>
+<div data-work-card aria-hidden="true" class="pointer-events-none fixed left-0 top-0 z-40 w-72 bg-ink p-4 text-snow opacity-0 invisible shadow-[6px_6px_0_var(--color-royal)]">
+  <div data-work-card-body></div>
+</div>

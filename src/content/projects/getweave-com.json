@@ -1,0 +1,16 @@
+{
+  "title": "getweave.com",
+  "year": "2019–2026",
+  "role": "Website owner",
+  "summary": "End-to-end ownership of a high-traffic SaaS marketing site: SEO and answer-engine visibility, site code and integrations, competitor analysis, and Salesforce lead routing with lead-quality analysis.",
+  "stack": [
+    "SEO / AEO",
+    "Salesforce",
+    "GitHub Actions",
+    "CI/CD",
+    "Analytics"
+  ],
+  "url": "https://www.getweave.com",
+  "featured": true,
+  "order": 1
+}

@@ -1,0 +1,14 @@
+{
+  "title": "Janggi dashboard",
+  "year": "2016",
+  "role": "Side project",
+  "summary": "A two-player, real-time board for Janggi (Korean chess) that ran inside WordPress. Movement rules, turn enforcement, and undo were next on the list.",
+  "stack": [
+    "JavaScript",
+    "PHP",
+    "WordPress"
+  ],
+  "url": "https://en.wikipedia.org/wiki/Janggi",
+  "featured": false,
+  "order": 6
+}

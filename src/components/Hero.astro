@@ -1,0 +1,29 @@
+---
+interface Props { lede: string; now: string; location: string }
+const { lede, now, location } = Astro.props;
+const source = '<h1>Brett Peterson</h1>';
+const split = (w: string) => [...w];
+---
+<section data-hero class="wrap pt-10 pb-20 sm:pt-16" data-x="<section#hero>">
+  <p aria-hidden="true" class="mb-4 font-mono text-[13px] text-royal sm:text-sm">
+    {split(source).map((c) => <span data-src-char>{c}</span>)}<span data-caret class="ml-0.5 inline-block w-[0.55em] bg-royal">&nbsp;</span>
+  </p>
+
+  <h1 aria-label="Brett Peterson" class="select-none uppercase leading-[0.8] tracking-[-0.02em] text-[clamp(5.5rem,21vw,19rem)]" data-x="<h1>">
+    <span aria-hidden="true" class="block overflow-hidden pt-[0.04em]">
+      {split('Brett').map((c) => <span class="glyph">{c}</span>)}
+    </span>
+    <span aria-hidden="true" class="block overflow-hidden pb-[0.02em] pl-[0.6em] sm:pl-[1.4em]">
+      {split('Peterson').map((c) => <span class="glyph">{c}</span>)}
+    </span>
+  </h1>
+
+  <div class="mt-12 grid gap-10 md:grid-cols-[minmax(0,34rem)_1fr] md:items-end">
+    <p data-hero-rest class="text-lg leading-relaxed">{lede}</p>
+    <dl data-hero-rest class="grid grid-cols-[auto_1fr] gap-x-5 gap-y-1 text-sm md:justify-self-end">
+      <dt class="text-slate">Now</dt><dd>{now}</dd>
+      <dt class="text-slate">Based in</dt><dd>{location}</dd>
+      <dt class="text-slate">Try</dt><dd>press <kbd class="border border-rule px-1 font-mono text-[12px]">X</kbd> to see how this page is built</dd>
+    </dl>
+  </div>
+</section>

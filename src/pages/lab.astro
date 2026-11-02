@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Lab" description="Experiments, games, and Easter eggs.">
+  <section class="wrap pt-12">
+    <h1 class="text-[clamp(4rem,13vw,11rem)] font-black uppercase">Lab</h1>
+    <p class="measure mt-6 text-lg">Things I build to see if they can be built. Some of them are running on this page right now.</p>
+  </section>
+
+  <section class="wrap mt-16 grid gap-px border border-rule bg-rule md:grid-cols-2" data-x="<section.lab>">
+    <article class="bg-snow p-8">
+      <h2 class="text-5xl font-black">Outworked</h2>
+      <p class="mt-4 measure">An office of AI employees on your Mac. Hire agents, give them roles, describe a goal, and watch them split it up and ship it in a pixel office.</p>
+      <a href="https://github.com/outworked/outworked" class="link mt-6 inline-block text-royal" target="_blank" rel="noopener">See it on GitHub</a>
+    </article>
+    <article class="bg-snow p-8">
+      <h2 class="text-5xl font-black">X-ray mode</h2>
+      <p class="mt-4 measure">Every page here can show you how it's built: element outlines, DOM size, bytes over the wire, and time to interactive, measured live in your browser.</p>
+      <button type="button" data-xray-toggle class="mt-6 border border-ink px-4 py-2 hover:bg-ink hover:text-snow" aria-pressed="false">Turn on x-ray</button>
+    </article>
+    <article class="bg-snow p-8">
+      <h2 class="text-5xl font-black">Konami code</h2>
+      <p class="mt-4 measure">I wrote about hiding Easter eggs in 2013. There's one on every page of this site. You know the sequence.</p>
+      <p class="mt-6 font-mono text-sm text-slate" aria-label="Up up down down left right left right B A">↑ ↑ ↓ ↓ ← → ← → B A</p>
+    </article>
+    <article class="bg-snow p-8">
+      <h2 class="text-5xl font-black">Janggi dashboard</h2>
+      <p class="mt-4 measure">A real-time, two-player board for Korean chess I built inside WordPress in 2016. Next on the list were movement rules, turn enforcement, and undo. Maybe it's time to finish it.</p>
+      <a href="https://en.wikipedia.org/wiki/Janggi" class="link mt-6 inline-block text-royal" target="_blank" rel="noopener">How Janggi works</a>
+    </article>
+  </section>
+</Base>

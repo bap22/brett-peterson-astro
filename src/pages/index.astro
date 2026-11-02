@@ -1,0 +1,41 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Timeline from '../components/Timeline.astro';
+import WorkList from '../components/WorkList.astro';
+import PostList from '../components/PostList.astro';
+import { getCollection, getEntry } from 'astro:content';
+
+const site = (await getEntry('site', 'site'))!.data;
+const projects = (await getCollection('projects', (p) => p.data.featured)).sort((a, b) => (a.data.order ?? 10) - (b.data.order ?? 10));
+const allPosts = (await getCollection('posts')).sort((a, b) => +b.data.date - +a.data.date);
+const posts = allPosts.slice(0, 5);
+---
+<Base>
+  <Hero lede={site.lede} now={site.now} location={site.location} />
+  <Timeline />
+
+  <section class="wrap mt-28" aria-labelledby="work-title" data-x="<section#work>">
+    <div class="mb-8 flex items-end justify-between gap-6">
+      <h2 id="work-title" class="section-title">Selected work</h2>
+      <a href="/work" class="link text-sm">All work and the 2014 archive</a>
+    </div>
+    <WorkList projects={projects} />
+  </section>
+
+  <section class="wrap mt-28 grid gap-12 lg:grid-cols-[1fr_2fr]" aria-labelledby="writing-title" data-x="<section#writing>">
+    <div>
+      <h2 id="writing-title" class="section-title">Writing</h2>
+      <p class="mt-4 max-w-xs text-slate">Fixes I wished someone had written down, going back to 2011. Mostly WordPress, Magento, and servers.</p>
+      <a href="/writing" class="link mt-6 inline-block text-sm">All {allPosts.length} posts</a>
+    </div>
+    <PostList posts={posts} />
+  </section>
+
+  <section class="wrap mt-28" aria-labelledby="tools-title" data-x="<section#toolbox>">
+    <h2 id="tools-title" class="section-title">Toolbox</h2>
+    <p class="mt-6 max-w-5xl font-display text-[clamp(1.6rem,3.4vw,2.8rem)] font-semibold leading-tight text-slate">
+      {site.toolbox.map((t, i) => <><span class="text-ink">{t}</span>{i < site.toolbox.length - 1 && <span aria-hidden="true"> / </span>}</>)}
+    </p>
+  </section>
+</Base>

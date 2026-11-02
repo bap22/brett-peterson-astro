@@ -1,0 +1,13 @@
+---
+interface Item { label: string; href?: string; action?: string; value?: string; group: string; hint?: string }
+const { items } = Astro.props as { items: Item[] };
+---
+<dialog id="palette" class="m-auto mt-[12vh] w-[min(92vw,36rem)] bg-snow p-0 text-ink shadow-[10px_10px_0_var(--color-ink)] backdrop:bg-ink/40 backdrop:backdrop-blur-sm" aria-label="Command menu">
+  <div class="border-b border-rule">
+    <label for="palette-q" class="sr-only">Search pages, posts and actions</label>
+    <input id="palette-q" type="text" autocomplete="off" spellcheck="false" placeholder="Jump to a page, post, or action" class="w-full bg-transparent px-5 py-4 text-lg outline-none placeholder:text-slate" />
+  </div>
+  <ul id="palette-list" role="listbox" class="max-h-[50vh] overflow-y-auto py-2"></ul>
+  <p class="border-t border-rule px-5 py-2 text-[13px] text-slate">↑ ↓ to move, Enter to open, Esc to close</p>
+  <script type="application/json" id="palette-data" set:html={JSON.stringify(items)} />
+</dialog>

@@ -1,0 +1,68 @@
+---
+import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
+import { getCollection, getEntry } from 'astro:content';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import CommandPalette from '../components/CommandPalette.astro';
+
+interface Props { title?: string; description?: string; }
+const site = (await getEntry('site', 'site'))!.data;
+const { title, description = site.lede } = Astro.props;
+const fullTitle = title ? `${title} | Brett Peterson` : 'Brett Peterson, web developer';
+const canonical = new URL(Astro.url.pathname, Astro.site);
+
+const posts = (await getCollection('posts')).sort((a, b) => +b.data.date - +a.data.date);
+const paletteItems = [
+  { label: 'Home', href: '/', group: 'Pages' },
+  { label: 'Work', href: '/work', group: 'Pages' },
+  { label: 'Writing', href: '/writing', group: 'Pages' },
+  { label: 'Lab', href: '/lab', group: 'Pages' },
+  { label: 'About', href: '/about', group: 'Pages' },
+  { label: 'Toggle x-ray mode', action: 'xray', group: 'Actions', hint: 'X' },
+  { label: `Copy email (${site.email})`, action: 'copy-email', value: site.email, group: 'Actions' },
+  ...site.socials.map((s) => ({ label: s.label, href: s.url, group: 'Elsewhere' })),
+  ...posts.map((p) => ({ label: p.data.title, href: `/writing/${p.id}`, group: 'Writing' })),
+];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Brett Peterson, writing" href="/rss.xml" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="@bap22" />
+    <meta name="theme-color" content="#edf0f4" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org', '@type': 'Person', name: 'Brett Peterson', url: 'https://brett-peterson.com',
+      jobTitle: 'Web developer', address: { '@type': 'PostalAddress', addressLocality: 'Highland', addressRegion: 'UT' },
+      sameAs: site.socials.map((s) => s.url),
+    })} />
+    <ClientRouter />
+  </head>
+  <body class="min-h-dvh">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-hi focus:px-3 focus:py-2">Skip to content</a>
+    <Nav />
+    <main id="main" data-x="<main>">
+      <slot />
+    </main>
+    <Footer email={site.email} socials={site.socials} />
+    <CommandPalette items={paletteItems} />
+    <div id="xray-panel" hidden class="fixed bottom-4 right-4 z-50 w-64 bg-ink p-4 font-mono text-[12px] leading-relaxed text-snow shadow-[6px_6px_0_var(--color-hi)]" role="status" aria-live="polite"></div>
+    <div id="toast" class="pointer-events-none fixed left-1/2 top-5 z-50 -translate-x-1/2 bg-ink px-4 py-2 text-sm text-snow opacity-0 transition-opacity" role="status" aria-live="polite"></div>
+    <script>
+      import { boot } from '../scripts/site';
+      boot();
+    </script>
+  </body>
+</html>

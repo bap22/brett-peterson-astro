@@ -1,0 +1,16 @@
+{
+  "title": "Outworked",
+  "year": "2026",
+  "role": "Creator",
+  "summary": "A macOS app that turns Claude into a team of AI employees working a pixel office. Describe a goal; an orchestrator splits it into tasks and the agents write code, browse, message, and run scheduled jobs.",
+  "stack": [
+    "Electron",
+    "React",
+    "Claude Code SDK",
+    "Phaser",
+    "MCP"
+  ],
+  "url": "https://github.com/outworked/outworked",
+  "featured": true,
+  "order": 3
+}

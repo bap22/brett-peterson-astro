@@ -1,0 +1,23 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props { posts: CollectionEntry<'posts'>[] }
+const { posts } = Astro.props;
+const fmt = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+let lastYear = '';
+---
+<ol class="border-t border-ink" data-x="<ol.posts>">
+  {posts.map((p) => {
+    const year = String(p.data.date.getUTCFullYear());
+    const showYear = year !== lastYear; lastYear = year;
+    return (
+      <li class="grid grid-cols-[4.5rem_1fr] gap-4 border-b border-rule sm:grid-cols-[7rem_1fr_auto]">
+        <span class="py-4 font-display text-2xl font-bold text-slate">{showYear ? year : ''}</span>
+        <a href={`/writing/${p.id}`} class="group block py-4 no-underline">
+          <span class="text-lg font-medium group-hover:text-royal">{p.data.title}</span>
+          <span class="block text-sm text-slate">{p.data.summary}</span>
+        </a>
+        <time datetime={p.data.date.toISOString()} class="hidden py-4 text-sm text-slate sm:block">{fmt.format(p.data.date)}</time>
+      </li>
+    );
+  })}
+</ol>

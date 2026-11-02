@@ -1,0 +1,13 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+import { getCollection } from 'astro:content';
+const posts = (await getCollection('posts')).sort((a, b) => +b.data.date - +a.data.date);
+---
+<Base title="Writing" description="Notes on WordPress, Magento, Joomla, PHP, and servers, from 2011 on.">
+  <section class="wrap pt-12">
+    <h1 class="text-[clamp(4rem,13vw,11rem)] font-black uppercase">Writing</h1>
+    <p class="measure mt-6 text-lg">{posts.length} posts. The older ones are condensed from my WordPress blog; the fixes still hold up better than the screenshots would have. <a class="underline" href="/rss.xml">RSS</a></p>
+  </section>
+  <section class="wrap mt-16"><PostList posts={posts} /></section>
+</Base>

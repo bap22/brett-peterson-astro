@@ -1,0 +1,40 @@
+{
+  "lede": "I build websites that have to earn their keep: fast pages, honest analytics, clean lead data, and search visibility that holds up as search turns into answers. Seventeen years of shipping, from PHP and Magento to Astro and AI agents.",
+  "now": "Building at Pattern. Tinkering on Outworked after hours.",
+  "location": "Highland, Utah",
+  "email": "hello@brett-peterson.com",
+  "socials": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/bap22"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/brettpeterson/"
+    },
+    {
+      "label": "X / Twitter",
+      "url": "https://twitter.com/bap22"
+    }
+  ],
+  "toolbox": [
+    "Astro",
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Tailwind",
+    "GSAP",
+    "Node",
+    "PHP",
+    "WordPress",
+    "Magento",
+    "Symfony",
+    "Salesforce",
+    "GitHub Actions",
+    "Vercel",
+    "GrowthBook",
+    "Claude Code",
+    "SEO / AEO",
+    "Electron"
+  ]
+}

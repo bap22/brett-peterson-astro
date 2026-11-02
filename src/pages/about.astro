@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import { getEntry } from 'astro:content';
+const site = (await getEntry('site', 'site'))!.data;
+---
+<Base title="About" description="Brett Peterson: web developer, website owner, family man, BYU fan.">
+  <section class="wrap pt-12">
+    <h1 class="text-[clamp(4rem,13vw,11rem)] font-black uppercase">About</h1>
+  </section>
+
+  <section class="wrap mt-12 grid gap-16 lg:grid-cols-[2fr_1fr]">
+    <div class="measure space-y-5 text-lg">
+      <p>I'm Brett. I've been building for the web since 2009, starting with a services company I started with friends during the downturn and a long run of PHP, WordPress, Magento, and Joomla work.</p>
+      <p>For almost seven years I owned getweave.com end to end: the code, the integrations, SEO and answer-engine strategy, competitor research, and the Salesforce lead routing that decided which leads reached sales. Along the way I turned website work into an engineering practice, with GitHub, CI/CD, and sprints for a marketing team.</p>
+      <p>In September 2026 I joined Pattern. After hours I'm building Outworked, a desktop app that runs a team of AI agents.</p>
+      <p>I live in {site.location} with my family. I'm good at explaining technical work to people who don't want to hear about technical work.</p>
+    </div>
+    <aside class="space-y-12">
+      <figure class="border-l-2 border-royal pl-5">
+        <blockquote class="font-display text-3xl font-bold leading-tight">“He is a tireless worker and fun co-worker to be around.”</blockquote>
+        <figcaption class="mt-3 text-sm text-slate">Dan, Leadgenix</figcaption>
+      </figure>
+      <div>
+        <h2 class="text-4xl font-black">Gameday</h2>
+        <p class="mt-3 text-slate">Lifelong BYU fan. The gameday anthem is still Fictionist's “Momentum.” Rise and shout.</p>
+        <ul class="mt-4 space-y-1 text-sm">
+          <li><a class="link" href="https://twitter.com/BYUCougars" target="_blank" rel="noopener">@BYUCougars</a></li>
+          <li><a class="link" href="https://twitter.com/byuROC" target="_blank" rel="noopener">@byuROC, Roar of Cougars</a></li>
+        </ul>
+      </div>
+    </aside>
+  </section>
+</Base>

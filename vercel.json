@@ -1,0 +1,156 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/2011/11/15/ajax-with-joomla",
+      "destination": "/writing/ajax-with-joomla",
+      "permanent": true
+    },
+    {
+      "source": "/2014/08/09/calculate-molecular-weight-based-on-formula",
+      "destination": "/writing/calculate-molecular-weight-based-on-formula",
+      "permanent": true
+    },
+    {
+      "source": "/2012/06/19/default-custom-attributes",
+      "destination": "/writing/default-custom-attributes",
+      "permanent": true
+    },
+    {
+      "source": "/2012/02/16/direct-access-to-comments",
+      "destination": "/writing/direct-access-to-comments",
+      "permanent": true
+    },
+    {
+      "source": "/2012/11/21/dreamweaver-adding-spaces",
+      "destination": "/writing/dreamweaver-adding-spaces",
+      "permanent": true
+    },
+    {
+      "source": "/2013/04/17/featured-image-responsive",
+      "destination": "/writing/featured-image-responsive",
+      "permanent": true
+    },
+    {
+      "source": "/2015/08/12/how-much-should-you-spend-on-digital-marketing",
+      "destination": "/writing/how-much-should-you-spend-on-digital-marketing",
+      "permanent": true
+    },
+    {
+      "source": "/2011/11/10/joomla-redirect-on-login",
+      "destination": "/writing/joomla-redirect-on-login",
+      "permanent": true
+    },
+    {
+      "source": "/2011/11/17/keywords-used-to-find-site",
+      "destination": "/writing/keywords-used-to-find-site",
+      "permanent": true
+    },
+    {
+      "source": "/2013/02/10/konami-code-javascript",
+      "destination": "/writing/konami-code-javascript",
+      "permanent": true
+    },
+    {
+      "source": "/2012/03/23/modsecurity-input-filter-failed-to-create-temporary-file-root-tmp",
+      "destination": "/writing/modsecurity-input-filter-failed-to-create-temporary-file-root-tmp",
+      "permanent": true
+    },
+    {
+      "source": "/2012/04/03/moving-wordpress",
+      "destination": "/writing/moving-wordpress",
+      "permanent": true
+    },
+    {
+      "source": "/2012/02/03/mysql-debugging-in-magento",
+      "destination": "/writing/mysql-debugging-in-magento",
+      "permanent": true
+    },
+    {
+      "source": "/2011/11/15/protect-your-admin-and-custom-404-errors",
+      "destination": "/writing/protect-your-admin-and-custom-404-errors",
+      "permanent": true
+    },
+    {
+      "source": "/2013/01/28/set-who-will-get-comment-notifications",
+      "destination": "/writing/set-who-will-get-comment-notifications",
+      "permanent": true
+    },
+    {
+      "source": "/2011/12/27/site-to-site-through-ssh",
+      "destination": "/writing/site-to-site-through-ssh",
+      "permanent": true
+    },
+    {
+      "source": "/2015/08/07/ssl-on-aws",
+      "destination": "/writing/ssl-on-aws",
+      "permanent": true
+    },
+    {
+      "source": "/2011/11/28/suphp",
+      "destination": "/writing/suphp",
+      "permanent": true
+    },
+    {
+      "source": "/2012/07/20/wordpress-301-redirects-with-parameters",
+      "destination": "/writing/wordpress-301-redirects-with-parameters",
+      "permanent": true
+    },
+    {
+      "source": "/2015/08/27/wordpress-pagination",
+      "destination": "/writing/wordpress-pagination",
+      "permanent": true
+    },
+    {
+      "source": "/2014/08/09/zip-files",
+      "destination": "/writing/zip-files",
+      "permanent": true
+    },
+    {
+      "source": "/2014/07/09/zoho-crm-api-and-wordpress",
+      "destination": "/writing/zoho-crm-api-and-wordpress",
+      "permanent": true
+    },
+    {
+      "source": "/blog",
+      "destination": "/writing",
+      "permanent": true
+    },
+    {
+      "source": "/blog/page/:n",
+      "destination": "/writing",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/games",
+      "destination": "/lab",
+      "permanent": true
+    },
+    {
+      "source": "/games/jangki",
+      "destination": "/lab",
+      "permanent": true
+    },
+    {
+      "source": "/byu",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/#contact",
+      "permanent": true
+    },
+    {
+      "source": "/feed",
+      "destination": "/rss.xml",
+      "permanent": true
+    }
+  ]
+}
