@@ -1,6 +1,6 @@
 {
-  "lede": "I build websites that have to earn their keep: fast pages, honest analytics, clean lead data, and search visibility that holds up as search turns into answers. Seventeen years of shipping, from PHP and Magento to Astro and AI agents.",
-  "now": "Building at Pattern. Tinkering on Outworked after hours.",
+  "lede": "I build fast, good-looking websites in Next.js and Tailwind, and I own them after launch: search visibility, analytics, lead routing, and the integrations that keep them honest. Seventeen years of shipping, from PHP and Magento to the modern React stack.",
+  "now": "Building at Pattern.",
   "location": "Highland, Utah",
   "email": "hello@brett-peterson.com",
   "socials": [
@@ -18,23 +18,24 @@
     }
   ],
   "toolbox": [
-    "Astro",
     "Next.js",
     "React",
+    "Tailwind CSS",
     "TypeScript",
-    "Tailwind",
-    "GSAP",
+    "Astro",
+    "Vercel",
     "Node",
+    "GSAP",
+    "Framer Motion",
+    "Sanity",
+    "Upstash Redis",
+    "Resend",
     "PHP",
     "WordPress",
     "Magento",
-    "Symfony",
     "Salesforce",
     "GitHub Actions",
-    "Vercel",
     "GrowthBook",
-    "Claude Code",
-    "SEO / AEO",
-    "Electron"
+    "SEO / AEO"
   ]
 }

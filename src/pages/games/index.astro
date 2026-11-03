@@ -1,0 +1,53 @@
+---
+import Base from '../../layouts/Base.astro';
+const games = [
+  {
+    href: '/games/jangki', name: 'Jangki', players: '2 players, online',
+    body: 'Korean chess. Create a room, send your opponent the link, and play in real time with chat. Red moves first; capture the General to win.',
+    stack: 'Next.js original, TypeScript rules engine, Redis-backed rooms',
+    repo: 'https://github.com/bap22/Jangki',
+  },
+  {
+    href: '/games/skyjo', name: 'SkyJo', players: '2–4 players, online or with AI',
+    body: 'The card game where low scores win. Flip, swap, and clear matching columns before someone reveals their whole grid. Empty seats are filled by AI players.',
+    stack: 'Next.js original, React, Redis-backed rooms, AI opponents',
+    repo: 'https://github.com/bap22/skyjo-prototype',
+  },
+];
+---
+<Base title="Games" description="Jangki and SkyJo, playable online. Plus the Easter eggs hidden in this site.">
+  <section class="wrap pt-12">
+    <h1 class="text-[clamp(4rem,13vw,11rem)] font-black uppercase">Games</h1>
+    <p class="measure mt-6 text-lg">Board and card games I built in Next.js and brought over here. Both are live: start a room and send someone the link.</p>
+  </section>
+
+  <section class="wrap mt-16 border-t border-ink" data-x="<section.games>">
+    {games.map((g) => (
+      <article class="grid gap-6 border-b border-rule py-10 md:grid-cols-[1fr_1.4fr_auto] md:items-center">
+        <div>
+          <h2 class="text-[clamp(3rem,7vw,6rem)] font-black leading-none">{g.name}</h2>
+          <p class="mt-2 text-sm text-slate">{g.players}</p>
+        </div>
+        <div>
+          <p class="measure">{g.body}</p>
+          <p class="mt-3 text-sm text-slate">{g.stack}. <a class="underline" href={g.repo} target="_blank" rel="noopener">Source</a></p>
+        </div>
+        <a href={g.href} class="inline-block bg-ink px-6 py-3 text-center font-semibold text-snow hover:bg-royal">Play {g.name}</a>
+      </article>
+    ))}
+  </section>
+
+  <section class="wrap mt-24 grid gap-px border border-rule bg-rule md:grid-cols-2" aria-labelledby="eggs" data-x="<section.eggs>">
+    <h2 id="eggs" class="sr-only">Hidden in this site</h2>
+    <article class="bg-snow p-8">
+      <h3 class="text-4xl font-black">X-ray mode</h3>
+      <p class="mt-4 measure">Every page can show how it's built: element outlines, DOM size, bytes over the wire, and time to interactive, measured live in your browser.</p>
+      <button type="button" data-xray-toggle class="mt-6 border border-ink px-4 py-2 hover:bg-ink hover:text-snow" aria-pressed="false">Turn on x-ray</button>
+    </article>
+    <article class="bg-snow p-8">
+      <h3 class="text-4xl font-black">Konami code</h3>
+      <p class="mt-4 measure">I wrote about hiding Easter eggs back in 2013. There's one on every page here. You know the sequence.</p>
+      <p class="mt-6 font-mono text-sm text-slate" aria-label="Up up down down left right left right B A">↑ ↑ ↓ ↓ ← → ← → B A</p>
+    </article>
+  </section>
+</Base>

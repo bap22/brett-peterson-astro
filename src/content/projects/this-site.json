@@ -2,15 +2,16 @@
   "title": "brett-peterson.com",
   "year": "2026",
   "role": "Design & build",
-  "summary": "This site. Astro with zero JavaScript by default, GSAP where motion helps, Keystatic for editing in Git, and an x-ray mode that shows its own internals. Press X.",
+  "summary": "This site. Astro and Tailwind CSS with zero JavaScript by default, GSAP where motion helps, Keystatic for editing in Git, and two Next.js games ported in as React islands. Press X to see how it's built.",
   "stack": [
     "Astro",
-    "Tailwind",
+    "Tailwind CSS",
+    "React",
     "GSAP",
     "Keystatic",
     "Vercel"
   ],
   "url": "https://github.com/bap22/brett-peterson-astro",
   "featured": true,
-  "order": 4
+  "order": 5
 }

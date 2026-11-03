@@ -1,0 +1,15 @@
+{
+  "title": "brett-peterson.com, Next.js edition",
+  "year": "2026",
+  "role": "Design & build",
+  "summary": "The previous version of this site: Next.js 16 App Router, Tailwind CSS 4, and Framer Motion with a custom animated mesh background.",
+  "stack": [
+    "Next.js 16",
+    "Tailwind CSS 4",
+    "Framer Motion",
+    "TypeScript"
+  ],
+  "url": "https://github.com/bap22/brett-peterson-com",
+  "featured": false,
+  "order": 8
+}

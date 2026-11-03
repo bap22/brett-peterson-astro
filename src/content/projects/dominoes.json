@@ -1,0 +1,14 @@
+{
+  "title": "Dominoes",
+  "year": "2022",
+  "role": "Side project",
+  "summary": "Multiplayer dominoes with live trash talk, built on Next.js with Ably pub/sub for real-time play.",
+  "stack": [
+    "Next.js",
+    "React",
+    "Ably"
+  ],
+  "url": "https://github.com/bap22/dominoes",
+  "featured": false,
+  "order": 9
+}

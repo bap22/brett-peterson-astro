@@ -1,0 +1,15 @@
+{
+  "title": "Jangki",
+  "year": "2026",
+  "role": "Game",
+  "summary": "Real-time, two-player Korean chess with rooms, full piece rules, and chat. Built in Next.js; playable on this site.",
+  "stack": [
+    "Next.js",
+    "TypeScript",
+    "React",
+    "Upstash Redis"
+  ],
+  "url": "/games/jangki",
+  "featured": true,
+  "order": 4
+}

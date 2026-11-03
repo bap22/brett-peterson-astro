@@ -1,0 +1,10 @@
+---
+import Base from '../../../layouts/Base.astro';
+import GameFrame from '../../../components/GameFrame.astro';
+import Game from '../../../games/jangki/Game';
+export const prerender = false;
+const roomId = (Astro.params.roomId ?? '').replace(/[^a-z0-9-]/gi, '').slice(0, 40);
+---
+<Base title={`Jangki room ${roomId}`} description="A live Jangki game. Join to take the open seat.">
+  <GameFrame title="Jangki" back="/games/jangki"><Game client:only="react" roomId={roomId} /></GameFrame>
+</Base>

@@ -1,0 +1,14 @@
+{
+  "title": "SkyJo",
+  "year": "2026",
+  "role": "Game",
+  "summary": "Online SkyJo for two to four players with an open-room lobby and AI opponents for empty seats. Built in Next.js; playable on this site.",
+  "stack": [
+    "Next.js",
+    "React",
+    "Upstash Redis"
+  ],
+  "url": "/games/skyjo",
+  "featured": false,
+  "order": 6
+}

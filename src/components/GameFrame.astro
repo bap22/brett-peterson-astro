@@ -1,0 +1,12 @@
+---
+interface Props { title: string; back?: string }
+const { title, back = '/games' } = Astro.props;
+---
+<section class="wrap pt-6 pb-4 flex items-baseline justify-between gap-4">
+  <h1 class="text-[clamp(2.4rem,6vw,4.5rem)] font-black uppercase">{title}</h1>
+  <a href={back} class="link text-sm text-slate">All games</a>
+</section>
+<!-- data-lenis-prevent: games manage their own scrolling (chat panels, boards) -->
+<div class="wrap overflow-hidden border border-ink" data-lenis-prevent data-x="<div.game island>">
+  <slot />
+</div>

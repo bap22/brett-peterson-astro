@@ -36,6 +36,12 @@ Edit the files directly, or use the Keystatic admin at `/keystatic`:
 3. Keystatic writes four variables to `.env` (see `.env.example`). Add the same four to the Vercel project (Settings → Environment Variables) and redeploy.
 4. In the GitHub App settings, add `https://brett-peterson.com/api/keystatic/github/oauth/callback` as a callback URL.
 
+## Games
+
+`/games/jangki` and `/games/skyjo` are the original Next.js games, ported in as React islands (`src/games/`) with Astro API routes under `src/pages/api/`. Room state lives in Upstash Redis via `src/lib/kv.ts`; locally it falls back to memory, so `npm run dev` just works.
+
+For production, connect an Upstash Redis database to the Vercel project (Storage → Connect). The code reads either `KV_REST_API_URL` / `KV_REST_API_TOKEN` or `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN`. Without it, two players can land on different serverless instances and not see each other's moves.
+
 ## Restoring full blog posts
 
 The older posts were condensed during the move. To bring back the original bodies, export from WordPress (Tools → Export → Posts) **before the domain is switched**, then:

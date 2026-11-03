@@ -1,0 +1,8 @@
+---
+import Base from '../../../layouts/Base.astro';
+import GameFrame from '../../../components/GameFrame.astro';
+import Lobby from '../../../games/jangki/Lobby';
+---
+<Base title="Jangki" description="Play Jangki (Korean chess) online against a friend. Create a room and share the link.">
+  <GameFrame title="Jangki"><Lobby client:only="react" /></GameFrame>
+</Base>

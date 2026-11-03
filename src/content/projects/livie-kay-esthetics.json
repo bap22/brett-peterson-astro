@@ -1,0 +1,16 @@
+{
+  "title": "Livie Kay Esthetics",
+  "year": "2026",
+  "role": "Design & build",
+  "summary": "Marketing site for an esthetics studio: services, free-consultation booking, an Instagram-fed gallery, and a contact form that emails the owner.",
+  "stack": [
+    "Next.js 16",
+    "Tailwind CSS 4",
+    "React 19",
+    "Resend",
+    "Behold"
+  ],
+  "url": "https://www.liviekay.com",
+  "featured": true,
+  "order": 2
+}

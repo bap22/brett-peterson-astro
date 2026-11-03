@@ -1,6 +1,6 @@
 {
   "title": "Marketing engineering team",
-  "year": "2019–2026",
+  "year": "2019\u20132026",
   "role": "Builder & lead",
   "summary": "Turned website work into an engineering practice: pull requests, code review, CI/CD pipelines, and agile sprints for a marketing team.",
   "stack": [
@@ -9,6 +9,6 @@
     "Agile"
   ],
   "url": null,
-  "featured": true,
-  "order": 2
+  "featured": false,
+  "order": 10
 }

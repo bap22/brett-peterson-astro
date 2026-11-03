@@ -1,0 +1,15 @@
+{
+  "title": "Kristy S, keynote speaker",
+  "year": "2026",
+  "role": "Design & build",
+  "summary": "Speaker site for a keynote speaker on women in construction and leadership, with Sanity CMS so she can update talks, media, and bookings herself.",
+  "stack": [
+    "Next.js 16",
+    "Tailwind CSS 4",
+    "Sanity",
+    "Vercel"
+  ],
+  "url": "https://women-in-leadership.vercel.app",
+  "featured": true,
+  "order": 3
+}

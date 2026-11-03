@@ -128,16 +128,6 @@
       "permanent": true
     },
     {
-      "source": "/games",
-      "destination": "/lab",
-      "permanent": true
-    },
-    {
-      "source": "/games/jangki",
-      "destination": "/lab",
-      "permanent": true
-    },
-    {
       "source": "/byu",
       "destination": "/about",
       "permanent": true
@@ -150,6 +140,11 @@
     {
       "source": "/feed",
       "destination": "/rss.xml",
+      "permanent": true
+    },
+    {
+      "source": "/lab",
+      "destination": "/games",
       "permanent": true
     }
   ]

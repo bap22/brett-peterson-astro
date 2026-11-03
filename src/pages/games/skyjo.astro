@@ -1,0 +1,8 @@
+---
+import Base from '../../layouts/Base.astro';
+import GameFrame from '../../components/GameFrame.astro';
+import SkyJo from '../../games/skyjo/SkyJo.jsx';
+---
+<Base title="SkyJo" description="Play SkyJo online with 2 to 4 players. Empty seats are filled by AI.">
+  <GameFrame title="SkyJo"><SkyJo client:only="react" /></GameFrame>
+</Base>

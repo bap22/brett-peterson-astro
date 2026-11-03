@@ -1,0 +1,16 @@
+{
+  "title": "GoWild fare searcher",
+  "year": "2026",
+  "role": "Side project",
+  "summary": "Searches Frontier for GoWild fares from SLC to every domestic airport each day, posts a report to Slack, and has a Next.js dashboard for manual searches.",
+  "stack": [
+    "Next.js",
+    "Node",
+    "Puppeteer",
+    "Python",
+    "Slack"
+  ],
+  "url": "https://github.com/bap22/gowild-searcher",
+  "featured": false,
+  "order": 7
+}
