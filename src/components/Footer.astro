@@ -1,4 +1,5 @@
 ---
+import Roll from './Roll.astro';
 interface Props { email: string; socials: { label: string; url: string }[] }
 const { email, socials } = Astro.props;
 ---
@@ -12,7 +13,7 @@ const { email, socials } = Astro.props;
       </button>
     </div>
     <ul class="flex flex-wrap gap-6 text-sm">
-      {socials.map((s) => <li><a class="link" href={s.url} rel="me noopener" target="_blank">{s.label}</a></li>)}
+      {socials.map((s) => <li><a class="no-underline" href={s.url} rel="me noopener" target="_blank"><Roll text={s.label} /></a></li>)}
     </ul>
   </div>
   <div class="wrap flex flex-wrap justify-between gap-4 border-t border-rule py-6 text-sm text-slate">

@@ -12,7 +12,7 @@ const allPosts = (await getCollection('posts')).sort((a, b) => +b.data.date - +a
 const posts = allPosts.slice(0, 5);
 ---
 <Base>
-  <Hero lede={site.lede} now={site.now} location={site.location} />
+  <Hero lede={site.lede} location={site.location} />
   <Timeline />
 
   <section class="wrap mt-28" aria-labelledby="work-title" data-x="<section#work>">

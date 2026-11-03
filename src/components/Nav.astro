@@ -1,4 +1,5 @@
 ---
+import Roll from './Roll.astro';
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const links = [
   { href: '/work', label: 'Work' },
@@ -11,10 +12,10 @@ const links = [
   <a href="/" class="font-display text-2xl font-black tracking-tight no-underline" aria-label="Brett Peterson, home">bp</a>
   <nav aria-label="Main" class="flex items-center gap-5 text-sm sm:gap-7">
     {links.map((l) => (
-      <a href={l.href} class:list={['link', path.startsWith(l.href) && 'font-semibold']} aria-current={path.startsWith(l.href) ? 'page' : undefined}>{l.label}</a>
+      <a href={l.href} class:list={['no-underline', path.startsWith(l.href) && 'font-semibold']} aria-current={path.startsWith(l.href) ? 'page' : undefined}><Roll text={l.label} /></a>
     ))}
     <button type="button" data-xray-toggle class="hidden border border-rule px-2 py-1 text-[13px] hover:border-ink sm:inline" aria-pressed="false" title="Show how this page is built (X)">
-      View source
+      <Roll text="View source" />
     </button>
     <button type="button" data-palette-open class="border border-rule px-2 py-1 font-mono text-[12px] hover:border-ink" aria-label="Open command menu" title="Command menu (⌘K)">⌘K</button>
   </nav>

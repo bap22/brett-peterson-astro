@@ -92,3 +92,14 @@ html { transition: background-color 0.6s, color 0.6s; }
 
 /* Ported game UIs bring their own type; keep the site's display face out of them. */
 [data-lenis-prevent] :is(h1, h2, h3) { font-family: system-ui, sans-serif; line-height: 1.2; letter-spacing: normal; }
+
+/* ---------- Letter roll (nav + footer links) ---------- */
+.roll-track { display: inline-flex; overflow: hidden; height: 1.3em; line-height: 1.3; vertical-align: bottom; }
+.roll-track > span {
+  display: inline-block;
+  text-shadow: 0 1.3em var(--roll-color, var(--color-royal));
+  transition: transform 0.5s cubic-bezier(0.75, 0, 0.2, 1);
+  transition-delay: calc(var(--i) * 24ms);
+}
+:is(a, button):is(:hover, :focus-visible) > .roll-track > span { transform: translateY(-1.3em); }
+html.gameday .roll-track > span { --roll-color: #ffd84d; }

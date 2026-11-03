@@ -1,6 +1,7 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
+import { mountSky, type SkyItem } from './starfield';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -73,6 +74,12 @@ function hero() {
   const rest = $$('[data-hero-rest]', root);
   const caret = $('[data-caret]', root);
   const BASE = 720;
+
+  const skyData = $('[data-sky-items]', root);
+  if (skyData) {
+    const stop = mountSky(root, JSON.parse(skyData.textContent || '[]') as SkyItem[], { reduced: reduced() });
+    document.addEventListener('astro:before-swap', stop, { once: true });
+  }
 
   if (reduced()) { gsap.set(glyphs, { '--w': BASE }); return; }
 

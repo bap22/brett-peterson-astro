@@ -1,0 +1,6 @@
+---
+// Letter-roll link label: each letter slides up and is replaced by a copy rising from below.
+interface Props { text: string }
+const { text } = Astro.props;
+---
+<span class="sr-only">{text}</span><span class="roll-track" aria-hidden="true">{[...text].map((c, i) => <span style={`--i:${i}`}>{c === ' ' ? ' ' : c}</span>)}</span>

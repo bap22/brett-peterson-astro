@@ -2,22 +2,22 @@
 import { getCollection } from 'astro:content';
 const items = (await getCollection('timeline')).sort((a, b) => +a.data.start - +b.data.start);
 ---
-<section data-timeline class="relative overflow-hidden border-y border-rule bg-ink text-snow md:flex md:min-h-dvh md:flex-col md:justify-center" data-x="<section#timeline>" aria-labelledby="tl-title">
+<section data-timeline class="relative overflow-hidden border-b border-rule bg-snow text-ink md:flex md:min-h-dvh md:flex-col md:justify-center" data-x="<section#timeline>" aria-labelledby="tl-title">
   <div class="wrap flex items-end justify-between pt-14">
     <h2 id="tl-title" class="section-title">Since 2009</h2>
-    <p class="hidden max-w-xs text-sm text-snow/70 md:block">Five chapters, in order. Scroll to move through them.</p>
+    <p class="hidden max-w-xs text-sm text-slate md:block">Five chapters, in order. Scroll to move through them.</p>
   </div>
   <ol data-track class="flex flex-col gap-12 px-5 py-14 md:w-max md:flex-row md:gap-0 md:px-[max(1.25rem,calc((100vw-84rem)/2))]">
     {items.map((t, i) => (
-      <li class="md:w-[min(34rem,78vw)] md:shrink-0 md:border-l md:border-snow/20 md:px-10 first:md:border-l-0 first:md:pl-0">
-        <p class="font-display text-[clamp(4rem,9vw,8rem)] font-black leading-none text-snow/90">
-          {t.data.start}<span class="text-snow/35">{t.data.end ? `–${t.data.end.slice(2)}` : '–now'}</span>
+      <li class="md:w-[min(34rem,78vw)] md:shrink-0 md:border-l md:border-rule md:px-10 first:md:border-l-0 first:md:pl-0">
+        <p class="font-display text-[clamp(4rem,9vw,8rem)] font-black leading-none text-ink">
+          {t.data.start}<span class="text-rule">{t.data.end ? `–${t.data.end.slice(2)}` : '–now'}</span>
         </p>
-        <h3 class="mt-4 font-sans text-xl font-semibold leading-tight">{t.data.title}{t.data.org && t.data.org !== t.data.title && <span class="font-normal text-snow/60"> at {t.data.org}</span>}</h3>
-        <p class="mt-3 max-w-[30em] text-snow/75">{t.data.body}</p>
+        <h3 class="mt-4 font-sans text-xl font-semibold leading-tight">{t.data.title}{t.data.org && t.data.org !== t.data.title && <span class="font-normal text-slate"> at {t.data.org}</span>}</h3>
+        <p class="mt-3 max-w-[30em] text-slate">{t.data.body}</p>
         <span class="sr-only">Chapter {i + 1} of {items.length}</span>
       </li>
     ))}
   </ol>
-  <div class="absolute inset-x-0 bottom-0 hidden h-1 md:block"><div data-progress class="h-full origin-left scale-x-0 bg-hi"></div></div>
+  <div class="absolute inset-x-0 bottom-0 hidden h-1 md:block"><div data-progress class="h-full origin-left scale-x-0 bg-royal"></div></div>
 </section>

@@ -1,29 +1,66 @@
 ---
-interface Props { lede: string; now: string; location: string }
-const { lede, now, location } = Astro.props;
-const source = '<h1>Brett Peterson</h1>';
-const split = (w: string) => [...w];
+import { getCollection } from 'astro:content';
+interface Props { lede: string; location: string }
+const { lede, location } = Astro.props;
+
+// Every bright star in the sky is one of these.
+const catFor: Record<string, string> = {
+  'getweave-com': 'Career', 'marketing-engineering-team': 'Career',
+  'livie-kay-esthetics': 'Client sites', 'kristy-s-speaker-site': 'Client sites', 'leadgenix-client-sites': 'Client sites',
+};
+const year = (s: string) => parseInt(s.match(/\d{4}/)?.[0] ?? '2026', 10);
+const [posts, projects, archive, timeline] = await Promise.all([
+  getCollection('posts'), getCollection('projects'), getCollection('archive'), getCollection('timeline'),
+]);
+const items = [
+  ...posts.map((p) => ({ label: p.data.title, year: p.data.date.getUTCFullYear() + p.data.date.getUTCMonth() / 12, cat: 'Writing', href: `/writing/${p.id}`, detail: p.data.summary })),
+  ...projects.map((p) => ({ label: p.data.title, year: year(p.data.year), cat: catFor[p.id] ?? 'Games & tools', href: p.data.url ?? '/work', detail: p.data.stack.slice(0, 3).join(', ') })),
+  ...archive.map((a) => ({ label: a.data.name, year: year(a.data.year), cat: 'Client sites', href: '/work#archive-title', detail: 'From the 2014 portfolio' })),
+  ...timeline.map((t) => ({ label: t.data.org || t.data.title, year: year(t.data.start), cat: 'Career', detail: t.data.title })),
+];
+const counts = items.reduce<Record<string, number>>((a, i) => ((a[i.cat] = (a[i.cat] ?? 0) + 1), a), {});
+const cats = [
+  { name: 'Client sites', color: '#ffd84d' },
+  { name: 'Games & tools', color: '#8fe3c8' },
+  { name: 'Writing', color: '#9db8ff' },
+  { name: 'Career', color: '#ffffff' },
+];
+const line1 = 'Websites that';
+const line2 = 'earn their keep.';
+const source = '<h1>Websites that earn their keep.</h1>';
 ---
-<section data-hero class="wrap pt-10 pb-20 sm:pt-16" data-x="<section#hero>">
-  <p aria-hidden="true" class="mb-4 font-mono text-[13px] text-royal sm:text-sm">
-    {split(source).map((c) => <span data-src-char>{c}</span>)}<span data-caret class="ml-0.5 inline-block w-[0.55em] bg-royal">&nbsp;</span>
-  </p>
+<section data-hero data-sky-root class="relative overflow-hidden bg-ink text-snow" data-x="<section#hero canvas>">
+  <canvas data-sky aria-hidden="true" class="absolute inset-0"></canvas>
+  <div data-sky-tip aria-hidden="true" class="pointer-events-none absolute left-0 top-0 z-20 flex w-64 flex-col gap-0.5 border border-snow/15 bg-ink/90 px-3 py-2 text-[13px] leading-snug opacity-0 backdrop-blur transition-opacity duration-150 [&>span:last-child]:text-snow/60 [&>strong]:font-semibold"></div>
 
-  <h1 aria-label="Brett Peterson" class="select-none uppercase leading-[0.8] tracking-[-0.02em] text-[clamp(5.5rem,21vw,19rem)]" data-x="<h1>">
-    <span aria-hidden="true" class="block overflow-hidden pt-[0.04em]">
-      {split('Brett').map((c) => <span class="glyph">{c}</span>)}
-    </span>
-    <span aria-hidden="true" class="block overflow-hidden pb-[0.02em] pl-[0.6em] sm:pl-[1.4em]">
-      {split('Peterson').map((c) => <span class="glyph">{c}</span>)}
-    </span>
-  </h1>
+  <div class="wrap relative z-10 flex min-h-[calc(100dvh-5rem)] flex-col pt-10 pb-8 sm:pt-14">
+    <p class="text-[15px] text-snow/70">Brett Peterson, web developer in {location}</p>
+    <p aria-hidden="true" class="mt-3 font-mono text-[12px] text-[#9db8ff] sm:text-[13px]">
+      {[...source].map((c) => <span data-src-char>{c}</span>)}<span data-caret class="ml-0.5 inline-block w-[0.55em] bg-[#9db8ff]">&nbsp;</span>
+    </p>
+    <h1 aria-label="Websites that earn their keep." class="mt-2 select-none uppercase leading-[0.82] tracking-[-0.015em] text-[clamp(3.6rem,11.5vw,11.5rem)]" data-x="<h1>">
+      <span aria-hidden="true" class="block overflow-hidden pt-[0.04em]">{[...line1].map((c) => <span class="glyph">{c === ' ' ? ' ' : c}</span>)}</span>
+      <span aria-hidden="true" class="block overflow-hidden pb-[0.03em]">{[...line2].map((c) => <span class="glyph">{c === ' ' ? ' ' : c}</span>)}</span>
+    </h1>
 
-  <div class="mt-12 grid gap-10 md:grid-cols-[minmax(0,34rem)_1fr] md:items-end">
-    <p data-hero-rest class="text-lg leading-relaxed">{lede}</p>
-    <dl data-hero-rest class="grid grid-cols-[auto_1fr] gap-x-5 gap-y-1 text-sm md:justify-self-end">
-      <dt class="text-slate">Now</dt><dd>{now}</dd>
-      <dt class="text-slate">Based in</dt><dd>{location}</dd>
-      <dt class="text-slate">Try</dt><dd>press <kbd class="border border-rule px-1 font-mono text-[12px]">X</kbd> to see how this page is built</dd>
-    </dl>
+    <!-- The constellation band: stars are placed by year inside this box. -->
+    <div data-sky-band class="pointer-events-none mt-6 min-h-[34vh] flex-1"></div>
+
+    <div class="mt-10 grid gap-8 md:grid-cols-[minmax(0,32rem)_1fr] md:items-end">
+      <p data-hero-rest class="text-lg leading-relaxed text-snow/85">{lede}</p>
+      <div data-hero-rest class="md:justify-self-end">
+        <p class="mb-2 text-sm text-snow/60">Each star is something I built or wrote, placed by year. Hover to explore.</p>
+        <ul class="flex flex-wrap gap-2" aria-label="Highlight a constellation">
+          {cats.map((c) => (
+            <li>
+              <button type="button" data-sky-cat={c.name} aria-pressed="false" class="flex items-center gap-2 border border-snow/20 px-3 py-1.5 text-sm hover:border-snow/60 aria-pressed:border-snow aria-pressed:bg-snow/10">
+                <span class="size-2 rounded-full" style={`background:${c.color};box-shadow:0 0 8px ${c.color}`}></span>{c.name}<span class="text-snow/50">{counts[c.name] ?? 0}</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   </div>
+  <script type="application/json" data-sky-items set:html={JSON.stringify(items)} />
 </section>
